@@ -1,0 +1,12 @@
+ body {
+    background-image: linear-gradient( to right, #8aff9c, #4ccae0, #ff8abb, #ad38e8);
+} 
+
+.homescream{
+    padding: 100px;
+    font-size: 100px;
+}
+.btn btn-primary{
+    width: 500px;
+    height: 205px;
+}
