@@ -60,6 +60,7 @@ function getUserMediaSupported() {
               + (predictions[n].bbox[2] - 10) + 'px; top: 0; left: 0;';
   
           const highlighter = document.createElement('div');
+          highlighter.style.position = "absolute";
           highlighter.setAttribute('class', 'highlighter');
           highlighter.style = 'left: ' + predictions[n].bbox[0] + 'px; top: '
               + predictions[n].bbox[1] + 'px; width:' 
