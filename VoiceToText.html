@@ -10,26 +10,23 @@
         <title>Speech to text conversion using JavaScript</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <link rel="stylesheet" href="style.css">
         <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light" rel="stylesheet">
-
+        <script type="text/javascript" src="chatbot.js"></script>
     </head>
 
     <body>
-        <div class="mycontainer">
-
-            <h1>Speech to text conversion using JavaScript</h1>
-
-            <div class="mywebapp"> 
-                <div class="input">
-                    <textarea id="textbox" rows="6"></textarea>
+        <div class="container">
+            <div class="app">
+                <div class="input-single">
+                    <textarea id="note-textarea" placeholder="Create a new note by typing or using voice recognition." rows="6"></textarea>
                 </div>         
-                <button id="start-btn" title="Start">Start</button>
-                <p id="instructions">Press the Start button</p>
+                <button id="start-record-btn" title="Start Recording">Start Recognition</button>
+                <button id="pause-record-btn" title="Pause Recording">Pause Recognition</button>
             </div>
         </div>
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="testVoiceToText.js"></script>
+        <script src="VoiceToText.js"></script>
+
     </body>
 </html>
