@@ -1,0 +1,40 @@
+/* .Responder{
+    text-align: left;
+    align-content: center;
+}
+.input-single{
+    text-align: right;
+    align-content: center;
+} */
+
+#note-textarea {
+    width: 800px;
+    height: 200px;
+    padding: 30px 5px;
+    margin-top: 7%;
+    box-sizing: border-box;
+    border: 3px solid #CCC;
+    background-color: #E1D8CA;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+    font-size:30px;
+    text-align: center;
+    font-family:sans-serif;
+}
+
+#response {
+    width: 800px;
+    height: 200px;
+    padding: 30px 5px;
+    padding-top:5%;
+    box-sizing: border-box;
+    border: 3px solid #CCC;
+    background-color: #E1D8CA;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+    font-size:30px;
+    text-align: center;
+    font-family:sans-serif;
+}

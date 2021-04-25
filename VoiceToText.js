@@ -12,7 +12,7 @@ catch(e) {
 var noteTextarea = $('#note-textarea');
 var instructions = $('#recording-instructions');
 var notesList = $('ul#notes');
-
+ 
 var noteContent = '';
 var micon = false;
 var notes = getAllNotes();
@@ -21,7 +21,7 @@ renderNotes(notes);
 recognition.continuous = false;
 
 speechSynthesis.cancel();
-var msg = new SpeechSynthesisUtterance("Press the spacebar once to start recording your voice and begin voice recognition. Press the space bar one more time to stop recording your voice.");
+var msg = new SpeechSynthesisUtterance("Press the spacebar once to start recording your voice and begin voice recognition. Press the space bar one more time to stop recording your voice. Press enter to get a response from");
 window.speechSynthesis.speak(msg);
 
 recognition.onresult = function(event) {
@@ -52,12 +52,14 @@ recognition.onerror = function(event) {
   };
 }
 
-// $('#start-record-btn').on('click', function(e) {
-//   if (noteContent.length) {
-//     noteContent += ' ';
-//   }
-//   recognition.start();
-// });
+document.addEventListener('keydown', function(event) {
+  if(event.keyCode == 37) {
+      window.location.href="index.html";
+  }
+  else if(event.keyCode == 39) {
+      window.location.href="object.html";
+  }
+});
 
 document.onkeypress = function (space) {
     space = space || window.event;
@@ -151,6 +153,7 @@ window.addEventListener('keyup', function (e) {
   if (e.keyCode === 13) {
     recognition.stop();
     speechSynthesis.cancel();
+    micon = false;
     var text = document.getElementById("note-textarea").value
     if(text.length != 0){
       respondToMessage(text);
@@ -176,13 +179,21 @@ function respondToMessage(text) {
       responseMessage = "Age is just a number, but if I had to say, I'm 7 hours old!";
     } else if(text.toLowerCase() === "how are you" || text.toLowerCase() === "what's up" || text.toLowerCase() === "whats up"
     || text.toLowerCase() === "how are you doing") {
-      responseMessage = "I'm currently talking to you and that makes me happy!";
+      responseMessage = "ehhh just got created by a bunch of sleep deprived freshmen. Talking to you makes me happy though!";
     } else if(text.toLowerCase() === "who are you" || text.toLowerCase() === "what's your name" || text.toLowerCase() === "whats your name" 
     || text.toLowerCase() === "what is your name" || text.toLowerCase() === "what are you" 
     || text.toLowerCase() === "new phone, who dis") {
       responseMessage = "Hi! My name is Rito. It's lovely to meet you.";
     } else if(text.toLowerCase() === "where are you from" || text.toLowerCase() === "where are you" || text.toLowerCase() === "can you hear me") {
       responseMessage = "I lurk quietly behind the screens of your computers.";
+    } else if(text.toLowerCase() === "can I talk to you" || text.toLowerCase() === "can you talk to me" || text.toLowerCase() === "I  'm sad"
+    || text.toLowerCase() === "i'm depressed" || text.toLowerCase() === "please talk to me" || text.toLowerCase() === "talk to me I'm bored"
+    || text.toLowerCase() === "i'm bored") {
+      responseMessage = "Talk to me! I legit cannot judge you as that is not within my parameters.";
+    }else if(text.toLowerCase() === "what do you like" || text.toLowerCase() === "what do you like to do" || text.toLowerCase() === "what are your hobbies"
+    || text.toLowerCase() === "what do you do in your free time" || text.toLowerCase() === "what do you do" || text.toLowerCase() === "i need hobbies"
+    || text.toLowerCase() === "do you have a hobby"){
+      responseMessage = "I talk to nice people like you as a hobby!";
     } else {
       responseMessage = "I'm sorry but I do not understand! Please try again.";
     }

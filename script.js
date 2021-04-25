@@ -3,6 +3,15 @@ const liveView = document.getElementById('liveView');
 const demosSection = document.getElementById('demos');
 const enableWebcamButton = document.getElementById('webcamButton');
 
+document.addEventListener('keydown', function(event) {
+  if(event.keyCode == 37) {
+      window.location.href="index.html";
+  }
+  else if(event.keyCode == 39) {
+      window.location.href="VoiceToText.html";
+  }
+});
+
 function getUserMediaSupported() {
     return !!(navigator.mediaDevices &&
       navigator.mediaDevices.getUserMedia);
@@ -53,7 +62,7 @@ function getUserMediaSupported() {
           const highlighter = document.createElement('div');
           highlighter.setAttribute('class', 'highlighter');
           highlighter.style = 'left: ' + predictions[n].bbox[0] + 'px; top: '
-              + predictions[n].bbox[1] + 'px; width: ' 
+              + predictions[n].bbox[1] + 'px; width:' 
               + predictions[n].bbox[2] + 'px; height: '
               + predictions[n].bbox[3] + 'px;';
   
