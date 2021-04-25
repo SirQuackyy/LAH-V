@@ -1,66 +1,71 @@
 body {
-    background-image: linear-gradient( #135a9c, #18139c);
+    /* background-image: linear-gradient( #135a9c, #18139c); */
+    background-image: url(https://wallpapercave.com/wp/wp5901315.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%; 
+    z-index: -10; 
   }
 
 p {
-    text-align: center;
-    font-family: helvetica, arial, sans-serif;
-    font-size:25px;
-    margin: 2em;
-    background: -webkit-linear-gradient(  #27e8ab 25%, #24b524 75%);
-    -webkit-background-clip: text;
-   -webkit-text-fill-color: transparent;
+  text-align: center;
+  font-variant: small-caps;
+  font-size: 25px;
+  margin: 0.5em;
+  background: -webkit-linear-gradient(#fa19be 25%, #9913a1 75%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family:sans-serif;
+}
+  
+h1 {
+  font-family:sans-serif;
+  text-align: center;
+  font-size: 55px;
+  font-style: bold;
+  background: -webkit-linear-gradient(#fa19be, #9913a1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
+video {
+  display: block;
+  /* width: 100%; */
+}
 
-  
-  h1 {
-    text-align: center;
-    font-size: 65px;
-    font-style: bold;
-    background: -webkit-linear-gradient(#fa19be , #9913a1);
-    -webkit-background-clip: text;
-   -webkit-text-fill-color: transparent;
-  }
-  
-  video {
-    display: block;
-  }
-  
-  section {
-    opacity: 1;
-    transition: opacity 500ms ease-in-out;
-  }
+section {
+  opacity: 1;
+  transition: opacity 500ms ease-in-out;
+}
 
-  .removed {
-    display: none;
-  }
-  
-  .invisible {
-    opacity: 0.2;
-  }
-  
-  .camView {
-    position: relative;
-    float: left;
-    width: calc(100% - 20px);
-    margin: 10px;
-    cursor: pointer;
-  }
-  
-  .camView p {
-    position: absolute;
-    padding: 5px;
-    background-color: rgba(255, 111, 0, 0.85);
-    color: #FFF;
-    border: 1px dashed rgba(255, 255, 255, 0.7);
-    z-index: 2;
-    font-size: 12px;
-  }
-  
-  .highlighter {
-    background: rgba(0, 255, 0, 0.25);
-    border: 1px dashed #fff;
-    z-index: 1;
-    position: absolute;
-  }
+.removed {
+  display: none;
+}
+
+.invisible {
+  opacity: 0.2;
+}
+
+.camView {
+  position: relative;
+  float: left;
+  width: calc(100% - 20px);
+  margin: 10px;
+  cursor: pointer;
+}
+
+.camView p {
+  position: absolute;
+  padding: 5px;
+  background-color: rgba(255, 111, 0, 0.85);
+  color: #FFF;
+  border: 1px dashed rgba(255, 255, 255, 0.7);
+  z-index: 2;
+  font-size: 12px;
+}
+
+.highlighter {
+  background: rgba(0, 255, 0, 0.25);
+  border: 1px dashed #fff;
+  z-index: 1;
+  position: absolute;
+}

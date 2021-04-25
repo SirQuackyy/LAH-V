@@ -1,7 +1,3 @@
-speechSynthesis.cancel();
-var msg = new SpeechSynthesisUtterance("Press the spacebar once to start recording your voice and begin voice recognition. Press the space bar one more time to stop recording your voice.");
-window.speechSynthesis.speak(msg);
-
 try {
   var SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
   var recognition = new SpeechRecognition();
@@ -22,7 +18,11 @@ var micon = false;
 var notes = getAllNotes();
 renderNotes(notes);
 
-recognition.continuous = true;
+recognition.continuous = false;
+
+speechSynthesis.cancel();
+var msg = new SpeechSynthesisUtterance("Press the spacebar once to start recording your voice and begin voice recognition. Press the space bar one more time to stop recording your voice.");
+window.speechSynthesis.speak(msg);
 
 recognition.onresult = function(event) {
 
@@ -52,24 +52,29 @@ recognition.onerror = function(event) {
   };
 }
 
-$('#start-record-btn').on('click', function(e) {
-  if (noteContent.length) {
-    noteContent += ' ';
-  }
-  recognition.start();
-});
+// $('#start-record-btn').on('click', function(e) {
+//   if (noteContent.length) {
+//     noteContent += ' ';
+//   }
+//   recognition.start();
+// });
 
 document.onkeypress = function (space) {
     space = space || window.event;
     if (!micon){
+      speechSynthesis.cancel();
       if (noteContent.length) {
-        noteContent += ' ';
+        noteContent = '';
       }
       recognition.start();
       micon = true;
+      var msg = new SpeechSynthesisUtterance("Played.");
+      window.speechSynthesis.speak(msg);
     } else if(micon){
       recognition.stop();
       micon = false;
+      var msg = new SpeechSynthesisUtterance("Paused.");
+      window.speechSynthesis.speak(msg);
     }
 };  
 function readOutLoud(message) {
@@ -83,10 +88,6 @@ function readOutLoud(message) {
 	window.speechSynthesis.speak(speech);
 }
 
-// Andrew did smart and Anish did smart
-//                                 ^ Used to be dum fair
-
-/*
 notesList.on('click', function(e) {
   e.preventDefault();
   var target = $(e.target);
@@ -146,8 +147,46 @@ function getAllNotes() {
   return notes;
 }
 
+window.addEventListener('keyup', function (e) {
+  if (e.keyCode === 13) {
+    recognition.stop();
+    speechSynthesis.cancel();
+    var text = document.getElementById("note-textarea").value
+    if(text.length != 0){
+      respondToMessage(text);
+    }
+  }
+}, false);
 
 function deleteNote(dateTime) {
   localStorage.removeItem('note-' + dateTime); 
 }
-console.log(noteContent); */
+console.log(noteContent);
+
+function respondToMessage(text) {
+  const response = document.getElementById("response");
+  var responseMessage = "";
+
+  if(text.toLowerCase() === "hello" || text.toLowerCase() === "hi" || text.toLowerCase() === "hey"
+    || text.toLowerCase() === "hey there" || text.toLowerCase() === "hello there" || text.toLowerCase() === "hi there"
+    || text.toLowerCase() === "hii") {
+      responseMessage = "Hello there!";
+    } else if(text.toLowerCase() === "how old are you" || text.toLowerCase() === "what is your age" || text.toLowerCase() === "what's your age"
+    || text.toLowerCase() === "whats your age") {
+      responseMessage = "Age is just a number, but if I had to say, I'm 7 hours old!";
+    } else if(text.toLowerCase() === "how are you" || text.toLowerCase() === "what's up" || text.toLowerCase() === "whats up"
+    || text.toLowerCase() === "how are you doing") {
+      responseMessage = "I'm currently talking to you and that makes me happy!";
+    } else if(text.toLowerCase() === "who are you" || text.toLowerCase() === "what's your name" || text.toLowerCase() === "whats your name" 
+    || text.toLowerCase() === "what is your name" || text.toLowerCase() === "what are you" 
+    || text.toLowerCase() === "new phone, who dis") {
+      responseMessage = "Hi! My name is Rito. It's lovely to meet you.";
+    } else if(text.toLowerCase() === "where are you from" || text.toLowerCase() === "where are you" || text.toLowerCase() === "can you hear me") {
+      responseMessage = "I lurk quietly behind the screens of your computers.";
+    } else {
+      responseMessage = "I'm sorry but I do not understand! Please try again.";
+    }
+
+  response.innerHTML = responseMessage;
+  readOutLoud(responseMessage);
+}
