@@ -2,7 +2,56 @@
     padding: 100px;
     font-size: 100px;
 }
+
 .btn btn-primary{
     width: 500px;
     height: 205px;
+}
+
+.banner {
+    background-image: url(https://i.imgur.com/AcYXbfD.jpg);
+    background-position: center center;
+    -webkit-background-size: cover;
+    background-size: cover;
+    height: 100vh;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    padding: 15px 60px;
+}
+
+.menu {
+    width: 42%;
+    float: right;
+    list-style: none;
+}
+
+.menu li{
+    width: 100px;
+    width: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: #fff;
+    font-size: 13px;
+    float: left;
+}
+
+.menu li:hover {
+    background: yellow;
+} a {
+    co
+}
+
+.menu li:hover
+
+.menu li a {
+    text-decoration: none;
+    font-family: baloo;
+    color: #fff;
+    text-transform: uppercase;
 }

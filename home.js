@@ -4,7 +4,7 @@ window.speechSynthesis.speak(msg);
 
 document.addEventListener('keydown', function(event) {
     if(event.keyCode == 37) {
-        window.location.href="";
+        window.location.href="VoiceToText.html";
     }
     else if(event.keyCode == 39) {
         window.location.href="object.html";

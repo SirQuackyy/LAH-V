@@ -72,9 +72,21 @@ document.onkeypress = function (space) {
       micon = false;
     }
 };  
+function readOutLoud(message) {
+	var speech = new SpeechSynthesisUtterance();
 
-// Andrew did smart and anish did smart
-//                                 ^ Used to be dum
+	speech.text = message;
+	speech.volume = 1;
+	speech.rate = 1;
+	speech.pitch = 1;
+  
+	window.speechSynthesis.speak(speech);
+}
+
+// Andrew did smart and Anish did smart
+//                                 ^ Used to be dum fair
+
+/*
 notesList.on('click', function(e) {
   e.preventDefault();
   var target = $(e.target);
@@ -91,16 +103,6 @@ notesList.on('click', function(e) {
   }
 });
 
-function readOutLoud(message) {
-	var speech = new SpeechSynthesisUtterance();
-
-	speech.text = message;
-	speech.volume = 1;
-	speech.rate = 1;
-	speech.pitch = 1;
-  
-	window.speechSynthesis.speak(speech);
-}
 
 function renderNotes(notes) {
   var html = '';
@@ -148,4 +150,4 @@ function getAllNotes() {
 function deleteNote(dateTime) {
   localStorage.removeItem('note-' + dateTime); 
 }
-console.log(noteContent);
+console.log(noteContent); */

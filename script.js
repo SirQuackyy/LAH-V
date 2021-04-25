@@ -75,9 +75,30 @@ window.speechSynthesis.speak(msg);
 var model = undefined;
 cocoSsd.load().then(function (loadedModel) {
     speechSynthesis.cancel();
-    var msg = new SpeechSynthesisUtterance("The model has finished loading. Put an item in front of the camera to detect it. Press space to tell you the");
+    var msg = new SpeechSynthesisUtterance("The model has finished loading. Put an item in front of the camera to detect it. Press space to tell you the items displayed.");
     window.speechSynthesis.speak(msg);
 
     model = loadedModel;
     demosSection.classList.remove('invisible');
+});
+
+document.onkeypress = function (space) {
+  space = space || window.event;
+  speechSynthesis.cancel();
+  ttsObjects();
+};
+
+function ttsObjects(){
+  model.detect(video).then(function (predictions) {
+    for (let i = 0; i < children.length; i++) {
+      liveView.removeChild(children[i]);
+    }
+    children.splice(0);
+    for (let n = 0; n < predictions.length; n++) {
+      if (predictions[n].score > 0.66) {
+          var msg = new SpeechSynthesisUtterance(predictions[n].class);
+          window.speechSynthesis.speak(msg);
+      }
+    }
   });
+}
