@@ -85,15 +85,22 @@ window.speechSynthesis.speak(msg);
 var model = undefined;
 cocoSsd.load().then(function (loadedModel) {
     speechSynthesis.cancel();
-    var msg = new SpeechSynthesisUtterance("The model has finished loading. Put an item in front of the camera to detect it. Press space to tell you the items displayed.");
+    var msg = new SpeechSynthesisUtterance("The model has finished loading. Press space once to enable the camera. Put an item in front of the camera to detect it. Press space to tell you the items displayed.");
     window.speechSynthesis.speak(msg);
 
     model = loadedModel;
     demosSection.classList.remove('invisible');
 });
 
+var clicked = false;
+
 document.onkeypress = function (space) {
   space = space || window.event;
+  var button = document.getElementById("webcamButton");
+  if(!clicked){
+      button.click();
+      clicked = true;
+  }
   speechSynthesis.cancel();
   ttsObjects();
 };
