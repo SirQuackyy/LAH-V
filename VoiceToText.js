@@ -21,7 +21,7 @@ renderNotes(notes);
 recognition.continuous = false;
 
 speechSynthesis.cancel();
-var msg = new SpeechSynthesisUtterance("Press the spacebar once to start recording your voice and begin voice recognition. Press the space bar one more time to stop recording your voice. Press enter to get a response from");
+var msg = new SpeechSynthesisUtterance("Press the spacebar once to start recording your voice and begin voice recognition. Press the space bar one more time to stop recording your voice. Press enter to get a response from the bot.");
 window.speechSynthesis.speak(msg);
 
 recognition.onresult = function(event) {
@@ -54,10 +54,10 @@ recognition.onerror = function(event) {
 
 document.addEventListener('keydown', function(event) {
   if(event.keyCode == 37) {
-      window.location.href="index.html";
+      window.location.href="object.html";
   }
   else if(event.keyCode == 39) {
-      window.location.href="object.html";
+      window.location.href="index.html";
   }
 });
 
